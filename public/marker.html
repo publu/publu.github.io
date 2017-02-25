@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<script src="js/aframe.min.js"></script>
+<!-- include aframe-artoolkit -->
+<script src="js/aframe-ar.js"></script>
+
+<body style='margin : 0px; overflow: hidden;'>
+<div style='position: fixed; top: 10px; width:inherit; text-align: left; z-index: 1;'>
+    <a href="index.html">Back</a>
+    <br/>
+</div>
+	<a-scene embedded artoolkit='sourceType: webcam;'>
+		<!-- handle unknown marker -->
+		<a-marker type='unknown'>
+			<a-box depth="1" height="1" width="1" position='0 0 0.5' material='opacity: 0.5; side:double; color:blue;'></a-box>
+		</a-marker>
+
+		<!-- handle hiro marker -->
+		<a-marker type='pattern' url='markers/patt.hiro'>
+			<a-box depth="1" height="1" width="1" position='0 0 0.5' material='opacity: 0.5; side:double; color:red;'></a-box>
+			<a-entity geometry="primitive: torusKnot; radius: 0.25; radiusTubular: 0.05" position='0 0 0.5' material='color:grey;'>
+				<a-animation attribute="rotation" from="0 0 0" to="360 0 0" dur="5000" easing='linear' repeat="indefinite"></a-animation>
+			</a-entity>
+		</a-marker>
+		
+		<!-- handle kanji marker -->
+		<a-marker type='pattern' url='markers/patt.kanji'>
+			<a-box depth="1" height="1" width="1" position='0 0 0.5' material='opacity: 0.5; side:double; color:green;'></a-box>
+			<a-entity geometry="primitive: torusKnot; radius: 0.25; radiusTubular: 0.05" position='0 0 0.5' material='color:grey;'>
+				<a-animation attribute="rotation" from="0 0 0" to="360 0 0" dur="1000" easing='linear' repeat="indefinite"></a-animation>
+			</a-entity>
+		</a-marker>
+		
+		<!-- add a simple camera -->
+		<a-entity camera></a-entity>
+	</a-scene>
+</body>
+</html>
